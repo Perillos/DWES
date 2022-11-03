@@ -1,0 +1,11 @@
+<html>
+    <head>
+        <title>HolaMundo</title>
+    </head>
+    <body>
+        <p>
+            <?php
+            echo"HolaMundo";?>
+    </p>
+    </body>
+    </html>

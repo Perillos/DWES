@@ -1,0 +1,1 @@
+<?php echo"Estoesunbloque"; echo"decódigocorrecto";?><?php echo"Estoesunbloque"; echo "de código correcto"?><?php echo"Estoesunbloquedecódigocorrecto"?>
