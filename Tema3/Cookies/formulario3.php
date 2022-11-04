@@ -1,7 +1,18 @@
 <?php
-include("head.php");
 
+
+include("head.php");
 session_start();
+
+
+
+
+
+
+
+
+include("dbcone.php");
+
 
 $NOMC=$_SESSION['nameS'];
 $MAILC=$_SESSION['emailS'];
@@ -10,6 +21,13 @@ $SEXC=$_SESSION['sexS'];
 $CONVS=$_REQUEST['nconv'];
 $AFICS=$_REQUEST['aficiones'];
 $MENUS=$_REQUEST['menu'];
+
+
+
+
+
+
+
 
 
 
@@ -26,6 +44,15 @@ foreach ($AFICS as $afi) {
 }
 echo ".</p>";
 echo  "<p>Tu menú: $MENUS</p>";
+
+
+
+
+
+$JAFIC = json_encode($AFICS);
+
+mysqli_query($link, "INSERT INTO clientesdwes.sesiones (nombre, email, urls, sexo, convivientes, aficiones, menu) VALUES ('$NOMC', '$MAILC', '$URLC', '$SEXC', '$CONVS', '$JAFIC', '$MENUS')");
+$my_error = mysqli_error($link);
 
 
 
