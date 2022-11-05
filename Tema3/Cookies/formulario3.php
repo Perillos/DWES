@@ -6,6 +6,9 @@ session_start();
 
 
 
+$CONVS=$_REQUEST['nconv'];
+$AFICS=$_REQUEST['aficiones'];
+$MENUS=$_REQUEST['menu'];
 
 
 
@@ -18,9 +21,6 @@ $NOMC=$_SESSION['nameS'];
 $MAILC=$_SESSION['emailS'];
 $URLC=$_SESSION['urlS'];
 $SEXC=$_SESSION['sexS'];
-$CONVS=$_REQUEST['nconv'];
-$AFICS=$_REQUEST['aficiones'];
-$MENUS=$_REQUEST['menu'];
 
 
 
