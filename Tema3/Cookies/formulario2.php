@@ -27,7 +27,7 @@ if (
         <form method="post" action="formulario3.php">
             <div>
                 <label for="nconv">Nª convivientes:</label>
-                <input name="nconv" type="number" id="nconv" placeholder="4">
+                <input name="nconv" type="number" id="nconv" value="1">
             </div>
 
             <div>

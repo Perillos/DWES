@@ -3,6 +3,10 @@
 include("head.php");
 session_start();
 
+if (!empty($_SESSION['errorS'])) {
+    $erro = $_SESSION['errorS'];
+    echo $erro;
+}
 
 ?>
 
@@ -17,7 +21,7 @@ session_start();
 
         <div>
             <label for="email">Email:</label>
-            <input name="email" type="text" id="email" placeholder="antonio@gnial.com">
+            <input name="email" type="email" id="email" placeholder="antonio@gnial.com">
         </div>
 
         <div>
