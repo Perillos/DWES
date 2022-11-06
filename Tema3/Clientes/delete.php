@@ -7,13 +7,10 @@ $value = $_GET['id'];
 
 $resulSel = mysqli_query($link, "SELECT  * FROM clientes WHERE id = '$value'");
 $array1 = mysqli_fetch_array($resulSel);
-$resulDel = mysqli_query($link, "DELETE FROM clientesdwes.clientes WHERE id = '$value'");
-$my_error = mysqli_error($link);
 
-if(!empty($my_error)) {
-    echo "<h2>Ha habido un error al borrar los datos. $my_error<h2>";
-} else {
-    echo "<h2>Los datos han sido borrados satisfactoriamente</h2>";
+
+echo "<h1>Estas seguro que quires eliminar al cliente</h1>";
+
     echo "<table border>";
 
     echo "
@@ -42,10 +39,11 @@ if(!empty($my_error)) {
         </tr>
     ";
 
-}
-
+    echo "
+    <div class='container'>
+    <a href='delete.controler.php?id=".$array1["7"]."' class='button'>Eliminar</a>
+    <a href='index.php' class='button'>Volver</a>
+    </div>
+    ";
 ?>
 
-<div class='container'>
-    <a href='index.php' class='button'>Volver a los clientes</a>
-</div>

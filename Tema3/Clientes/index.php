@@ -34,7 +34,7 @@ while ($row = mysqli_fetch_row($resul1)){
                 <td>$row[5]</td>
                 <td>$row[6]</td>
                 <td><a href='update.form.php?id=".$row["7"]."'><img src='/img/editar.png'></a></td>
-                <td><a href='delete.controler.php?id=".$row["7"]."' ><img src='/img/borrar.png'></a></td>
+                <td><a href='delete.php?id=".$row["7"]."' ><img src='/img/borrar.png'></a></td>
             </tr>
         ";
 } 
