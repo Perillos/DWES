@@ -38,6 +38,7 @@ echo "<h1>Estas seguro que quires eliminar al cliente</h1>";
             <td>$array1[6]</td>
         </tr>
     ";
+    echo "</table>";
 
     echo "
     <div class='container'>
