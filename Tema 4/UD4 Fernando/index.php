@@ -8,9 +8,13 @@ $type = $_SESSION['tipo'];
 $usu = $_SESSION['nombre'];
 
 if ($type == "admin") {
-    $resul1 = mysqli_query($link,"SELECT  * FROM usuarios");
+    $sql = "SELECT  * FROM usuarios";
+    $resul1 = $link->prepare($sql);
+    $resul1->execute();
+
+    // $resul1 = mysqli_query($link,"SELECT  * FROM usuarios");
 } else if ($type == "user") {
-    $resul1 = mysqli_query($link,"SELECT  * FROM usuarios where usuario='$usu'");
+    // $resul1 = mysqli_query($link,"SELECT  * FROM usuarios where usuario='$usu'");
 }
 
 
@@ -32,7 +36,7 @@ echo "
     ";
 
 
-while ($row = mysqli_fetch_row($resul1)){
+while ($row = $resul1->fetch()){
     $value = $row[7];
     echo "
             <tr>

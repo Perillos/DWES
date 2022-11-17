@@ -5,12 +5,19 @@ include("dbcone.php");
 $usu=$_POST['user'];
 $pwd=$_POST['key'];
 $sql = "select * from usuarios where usuario='$usu' and clave='$pwd'";
-$resultado = mysqli_query($link,$sql);
-$resarray = mysqli_fetch_array($resultado);
-$type = $resarray[3];
 
-
-if (mysqli_num_rows($resultado)!=0)
+// class persona{
+//     private $usuario;
+//     private $clave;
+//     public function NombreClave(){
+//     return $this->usuario.' '.$this->clave;
+//     }
+// }
+$resultado = $link->prepare($sql);
+$resultado->execute();
+$fila = $resultado->fetch();
+$type = $fila[3];
+if ($fila!=0)
 {
 session_start();
 $_SESSION['nombre']=$usu;
@@ -22,6 +29,4 @@ else {
 header ("Location: login.php");
 }
 
-// mysql_free_result($resultado);
-// mysql_close($link);
 ?>
