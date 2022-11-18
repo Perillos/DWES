@@ -6,12 +6,17 @@ include "head.php";
 
 $value = $_GET['id'];
 
-$resulSel = mysqli_query($link, "SELECT  * FROM usuarios WHERE id = '$value'");
-$array1 = mysqli_fetch_array($resulSel);
-$resulDel = mysqli_query($link, "DELETE FROM clientesdwes.clientes WHERE id = '$value'");
-$my_error = mysqli_error($link);
+$sql = "SELECT  * FROM usuarios WHERE id = '$value'";
+$resulSel = $link->prepare($sql);
+$resulSel->execute();
+$array1 = $resulSel->fetch();
 
-if(!empty($my_error)) {
+$sql = "DELETE FROM clientesdwes.usuarios WHERE id = '$value'";
+
+$resulDel = $link->prepare($sql);
+$resulDel->execute();
+
+if(!$resulDel) {
     echo "<h2>Ha habido un error al borrar los datos. $my_error<h2>";
 } else {
     echo "<h2>Los datos han sido borrados satisfactoriamente</h2>";
@@ -32,14 +37,14 @@ if(!empty($my_error)) {
         ";
     echo "
         <tr>
-            <td>$array1[7]</td>
             <td>$array1[0]</td>
-            <td>$array1[1]</td>
-            <td>$array1[2]</td>
-            <td>$array1[3]</td>
-            <td>$array1[4]</td>
             <td>$array1[5]</td>
+            <td>$array1[4]</td>
             <td>$array1[6]</td>
+            <td>$array1[7]</td>
+            <td>$array1[8]</td>
+            <td>$array1[9]</td>
+            <td>$array1[10]</td>
         </tr>
     ";
 

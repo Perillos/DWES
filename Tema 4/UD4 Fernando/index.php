@@ -3,20 +3,51 @@ include "seguridad.php";
 include "dbcone.php";
 include "head.php";
 
+// class Cliente{
+//     private $usuario;
+//     private $clave;
+//     private $clave;
+//     public function NombreClave(){
+//     return $this->usuario.' '.$this->clave;
+//     }
+// }
 
+echo "<h1>Lista de Usuarios</h1>";
+?>
+<form method="POST" action="index.php">
+    <div>
+        <label for="buscar">Buscar:</label>
+        <input name="buscar" type="text" id="buscar" placeholder="DNI">
+    </div>
+
+    <div class="container">
+        <input name="Enviar" value="Buscar" type="submit" class="button"><br>
+    </div>
+
+</form>
+
+<?php
+
+$DNI=$_REQUEST['buscar'];
 $type = $_SESSION['tipo'];
 $usu = $_SESSION['nombre'];
 
 if ($type == "admin") {
-    $sql = "SELECT  * FROM usuarios";
+    if ($DNI != "")  {
+        $sql = "SELECT  * FROM usuarios where DNI='$DNI'";
+        $resul1 = $link->prepare($sql);
+        $resul1->execute();
+    } else {
+        $sql = "SELECT  * FROM usuarios";
+        $resul1 = $link->prepare($sql);
+        $resul1->execute();
+    }
+
+} else if ($type == "user") {
+    $sql = "SELECT  * FROM usuarios where usuario='$usu'";
     $resul1 = $link->prepare($sql);
     $resul1->execute();
-
-    // $resul1 = mysqli_query($link,"SELECT  * FROM usuarios");
-} else if ($type == "user") {
-    // $resul1 = mysqli_query($link,"SELECT  * FROM usuarios where usuario='$usu'");
 }
-
 
 
 echo "<table border>";
@@ -37,7 +68,7 @@ echo "
 
 
 while ($row = $resul1->fetch()){
-    $value = $row[7];
+
     echo "
             <tr>
                 <td>$row[5]</td>
@@ -70,4 +101,6 @@ if ($type == "admin") {
             </div>
         ";
 }
+
+
 ?>

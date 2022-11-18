@@ -6,6 +6,7 @@ include "dbcone.php";
 $DNI=$_REQUEST['nif'];
 $USE=$_REQUEST['use'];
 $KEY=$_REQUEST['key'];
+$KEYHAS = password_hash($KEY, PASSWORD_DEFAULT);
 $NOM=$_REQUEST['name'];
 $DIR=$_REQUEST['adress'];
 $LOC=$_REQUEST['local'];
@@ -14,17 +15,11 @@ $TEL=$_REQUEST['phone'];
 $MAIL=$_REQUEST['email'];
 
 $sql = "select * from usuarios where DNI = '$DNI'";
-$resultado = mysqli_query($link,$sql);
+$resultado = $link->prepare($sql);
+$resultado->execute();
 
-if (mysqli_num_rows($resultado) != 0) {
-    echo "
-        <h3>El usuario ya ha sido registrado con ese DNI</h3>
-        <div class='container'>
-            <a href='login.php' class='button'>Login</a>
-        </div>
-    ";
-    
-    header ("Location: login.php");
+if ($resultado->fetch() != 0) {
+    header ("Location: zona.php");
 }
 
 
@@ -50,12 +45,12 @@ if(
                 </div>
         ";
     } else {
+        
+        $sql = "INSERT INTO clientesdwes.usuarios (DNI, usuario, clave, type, Nombre, Dirección, Localidad, Provincia, Telefono, email) VALUES ('$DNI', '$USE', '$KEYHAS', 'user', '$NOM', '$DIR', '$LOC', '$PRO', '$TEL', '$MAIL')";
+        $insertar = $link->prepare($sql);
+        $insertar->execute();
 
-
-        mysqli_query($link, "INSERT INTO clientesdwes.usuarios (DNI, usuario, clave, type, Nombre, Dirección, Localidad, Provincia, Telefono, email) VALUES ('$DNI', '$USE', '$KEY', 'user', '$NOM', '$DIR', '$LOC', '$PRO', '$TEL', '$MAIL')");
-        $my_error = mysqli_error($link);
-
-        if(!empty($my_error)) {
+        if(!$insertar) {
             echo "<h2>Ha habido un error al insertar los datos. $my_error<h2>";
         } else {
             echo "<h2>Los datos han sido introducidos satisfactoriamente</h2>";
@@ -64,7 +59,6 @@ if(
                     <a href='index.php' class='button'>Volver a los clientes</a>
                 </div>
             ";
-
         }
     }
 } else {

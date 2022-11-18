@@ -1,18 +1,14 @@
 <?php
 
-include("dbcone.php");
+include "dbcone.php";
 
 $usu=$_POST['user'];
 $pwd=$_POST['key'];
 $sql = "select * from usuarios where usuario='$usu' and clave='$pwd'";
 
-// class persona{
-//     private $usuario;
-//     private $clave;
-//     public function NombreClave(){
-//     return $this->usuario.' '.$this->clave;
-//     }
-// }
+
+
+
 $resultado = $link->prepare($sql);
 $resultado->execute();
 $fila = $resultado->fetch();

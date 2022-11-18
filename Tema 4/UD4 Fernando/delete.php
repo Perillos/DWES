@@ -6,9 +6,10 @@ include "head.php";
 
 $value = $_GET['id'];
 
-$resulSel = mysqli_query($link, "SELECT  * FROM usuarios WHERE id = '$value'");
-$array1 = mysqli_fetch_array($resulSel);
-
+$sql = "SELECT  * FROM usuarios WHERE id = '$value'";
+$result = $link->prepare($sql);
+$result->execute();
+$row = $result->fetch();
 
 echo "<h1>Estas seguro que quires eliminar al cliente</h1>";
 
@@ -29,21 +30,21 @@ echo "<h1>Estas seguro que quires eliminar al cliente</h1>";
         ";
     echo "
         <tr>
-            <td>$array1[0]</td>
-            <td>$array1[5]</td>
-            <td>$array1[4]</td>
-            <td>$array1[6]</td>
-            <td>$array1[7]</td>
-            <td>$array1[8]</td>
-            <td>$array1[9]</td>
-            <td>$array1[10]</td>
+            <td>$row[0]</td>
+            <td>$row[5]</td>
+            <td>$row[4]</td>
+            <td>$row[6]</td>
+            <td>$row[7]</td>
+            <td>$row[8]</td>
+            <td>$row[9]</td>
+            <td>$row[10]</td>
         </tr>
     ";
     echo "</table>";
 
     echo "
         <div class='container'>
-            <a href='delete.controler.php?id=".$array1["0"]."' class='button'>Eliminar</a>
+            <a href='delete.controler.php?id=".$row["0"]."' class='button'>Eliminar</a>
             <a href='index.php' class='button'>Volver</a>
         </div>
     ";
