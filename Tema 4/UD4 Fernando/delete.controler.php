@@ -47,7 +47,7 @@ if(!$resulDel) {
             <td>$array1[10]</td>
         </tr>
     ";
-
+    echo "</table border>";
 }
 
 ?>

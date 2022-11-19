@@ -32,13 +32,14 @@ if(
         ";
     } else {
         include("dbcone.php");
+        $sql = "UPDATE clientesdwes.usuarios
+        SET DNI = '$DNI', Nombre = '$NOM', Dirección = '$DIR', Localidad = '$LOC', Provincia = '$PRO', Telefono = '$TEL', email = '$MAIL' WHERE id = '$ID'";
+        $result = $link->prepare($sql);
+        $resultDe = $result->execute();;
 
-        mysqli_query($link, "UPDATE clientesdwes.usuarios
-        SET DNI = '$DNI', Nombre = '$NOM', Dirección = '$DIR', Localidad = '$LOC', Provincia = '$PRO', Telefono = '$TEL', email = '$MAIL' WHERE id = '$ID'");
+        
 
-        $my_error = mysqli_error($link);
-
-        if(!empty($my_error)) {
+        if(!$resultDe) {
             echo "<h2>Ha habido un error al insertar los valores. $my_error<h2>";
         } else {
             echo "<h2>Los datos han sido modificados satisfactoriamente</h2>";

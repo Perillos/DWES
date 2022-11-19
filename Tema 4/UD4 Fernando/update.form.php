@@ -6,9 +6,11 @@ include "head.php";
 
 $value = $_GET['id'];
 
+$sql = "SELECT  * FROM usuarios WHERE id = '$value'";
 
-$resul1 = mysqli_query($link,"SELECT  * FROM usuarios WHERE id = '$value'");
-$array1 = mysqli_fetch_array($resul1);
+$result = $link->prepare($sql);
+$result->execute();
+$array1 = $result->fetch();
 
 ?>
 <body>
@@ -17,6 +19,11 @@ $array1 = mysqli_fetch_array($resul1);
             <label for="id">Nº Cliente:</label>
             <input name="id" type="text" id="id" disabled value="<?php
             echo $array1[0]; ?>">
+        </div>
+        <div>
+            <label for="user">Usuario</label>
+            <input name="user" type="text" id="user" disabled value="<?php
+            echo $array1[1]; ?>">
         </div>
 
         <div>
