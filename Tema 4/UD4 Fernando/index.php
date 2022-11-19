@@ -3,19 +3,19 @@ include "seguridad.php";
 include "dbcone.php";
 include "head.php";
 
-class Cliente{
-    private $usuario;
-    private $clave;
-    private $nombre;
-    private $dni;
-    private $type;
-    private $type;
-    private $type;
-    private $type;
-    public function NombreClave(){
-    return $this->usuario.' '.$this->clave;
-    }
-}
+// class Cliente{
+//     private $usuario;
+//     private $clave;
+//     private $nombre;
+//     private $dni;
+//     private $type;
+//     private $type;
+//     private $type;
+//     private $type;
+//     public function NombreClave(){
+//     return $this->usuario.' '.$this->clave;
+//     }
+// }
 
 echo "<h1>Lista de Usuarios</h1>";
 
