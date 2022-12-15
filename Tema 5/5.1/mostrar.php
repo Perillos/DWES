@@ -11,11 +11,15 @@ $url = check_url($_REQUEST["url"]);
 $sex = empy_sex($_REQUEST["sexo"]);
 $convivientes = not_empy($_REQUEST["convivientes"], "número de convivientes");
 
+$sports = isset($_POST["sport"]) ? $sport = select_sport($_POST["sport"]) : $sport = select_sport(false);
 
+// var_dump($_POST["sport"]);
 
-isset($_POST["sport"]) ? $sport = select_sport($_POST["sport"]) : $sport = "No se han seleccionado aficiones";
+// isset($_POST["sport"]) ? $sport = select_sport($_POST["sport"]) : $sport = "No se han seleccionado aficiones";
 
 // $sport = isset($_POST["sport"]);
+// select_sport($_POST["sport"]);
+
 // $sport = select_sport($_POST["sport"]);
 $menu = not_empy($_REQUEST["menu"], "menu");
 
@@ -25,7 +29,12 @@ echo "<p>Tu email es: $email</p>";
 echo "<p>Tu pagina web es: $url</p>";
 echo "<p>Tu sexo es: $sex</p>";
 echo "<p>Número de convivientes en el domiciolio: $convivientes</p>";
-echo "<p>Aficiones: $sport</p>";
+echo "<p>Aficiones:";
+foreach ($sports as $sport) {
+  echo " $sport";
+}
+
+echo ".</p>";
 echo "<p>Tu menú favorito es: $menu</p>";
 
 

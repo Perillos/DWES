@@ -2,22 +2,20 @@
 
 function not_empy ($empyText, $text) {
     if(!$empyText) {
-        $error = "Debes escribir un $text, vuelve al formulario <a href= \"index.html\">aquí</a>";
-        return $error;
+      header("Location: index.php?error=El campo $text es incorrecto");
     }
     return $empyText;   
 }
 
 
 function check_email ($checkEmail) {
-
-    $posicion_arroba = strpos($checkEmail, "@");
-    $posicion_punto = strpos($checkEmail, ".", $posicion_arroba);
-
-    if (!$posicion_arroba && !$posicion_punto) {
-        $error = "Debes escribir un Email correcto, vuelve al formulario <a href= \"/exer19/actividades.html\">aquí</a>";
-        return $error;
-    }
+  
+  $posicion_arroba = strpos($checkEmail, "@");
+  $posicion_punto = strpos($checkEmail, ".", $posicion_arroba);
+  
+  if ($posicion_arroba && !$posicion_punto) {
+    header("Location: index.php?error=El email es incorrecto");
+  }
     return $checkEmail;
 }
 
@@ -43,15 +41,12 @@ function empy_sex ($empySex) {
 
 function select_sport ($selectSport) {
     if($selectSport) {
+      
         return $selectSport;
     }
-    $error = "No se han seleccionado aficiones";
+    $error[] = "No se han seleccionado aficiones";
     return $error;
 
 }
 
-
-
-
-
-?>
+// isset($_POST["sport"]) ? $sport = select_sport($_POST["sport"]) : $sport = "No se han seleccionado aficiones";
