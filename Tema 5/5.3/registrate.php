@@ -6,7 +6,7 @@ include "head.php";
 ?>
 
 <body>
-    <form method="post">
+    <form method="post" action="create.controler.php">
         <div>
             <label for="nif">DNI:</label>
             <input name="nif" type="text" id="nif" placeholder="73895197Z">
@@ -55,4 +55,4 @@ include "head.php";
     </form>
 </body>
 
-
+</html>

@@ -15,12 +15,12 @@ form {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 260px
 }
 form div {
     display: flex;
     justify-content: space-between;
     gap: 20px;
-    align-items: center;
 }
 
 

@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <title>Elija el archivo a subir</title>
+  </head>
+  <body>
+    <form name="subir" method="post" action="guardar_fichero.php" enctype="multipart/form-data">
+
+        NOMBRE <input type="text" name="nombre" size="43"><br>
+        APELLIDOS <input type="text" name="apellido" size="43"><br>
+        EMAIL <input type="email" name="email" size="43"><br>
+        
+        <br>
+        Seleccione un deporte
+        <select name="sport">
+          <option value="Futbol">Futbol</option>
+          <option value="Baloncesto">Baloncesto</option>
+          <option value="Natación">Natación</option>
+          <option value="Tenis">Tenis</option>
+          <option value="Ciclismo">Ciclismo</option>
+        </select>
+
+        <br>
+        Sexo:
+        <br>
+        <input type="radio" name="sex" value="masculino" checked>Masculino
+        <br>
+        <input type="radio" name="sex" value="femenino">Femenino
+        <br>
+        Conduzco: <input type="checkbox" name="conducir">
+        <br>
+        <br>
+        Archivo a subir
+        <input type="file" name="miarchivo" />
+        <br/>
+        Aficiones<br>
+        <textarea name="aficiones" cols="40" rows="5"></textarea><br>
+        <input type="submit" value="Enviar" />
+    </form>
+  </body>
+</html>
