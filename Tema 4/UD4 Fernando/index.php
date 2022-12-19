@@ -81,6 +81,7 @@ echo "
 while ($row = $resul1->fetch()){
 
     echo "
+    
             <tr>
                 <td>$row[5]</td>
                 <td>$row[4]</td>
