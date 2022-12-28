@@ -6,7 +6,7 @@ include "head.php";
 ?>
 
 <body>
-    <form method="post" action="create.controler.php">
+    <form method="post" action="/controller/users.controler.php">
         <div>
             <label for="nif">DNI:</label>
             <input name="nif" type="text" id="nif" placeholder="73895197Z">
