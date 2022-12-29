@@ -1,8 +1,10 @@
 
-const btnResset = document.getElementById('borrar');
+// Recogemos el DOM
+const buttonResset = document.getElementById('borrar');
 const formulario = document.getElementById('formulario')
 
-btnResset.addEventListener('click', alerta)
+// Escuchamos el boton de reset
+buttonResset.addEventListener('click', alerta)
 
 
 
