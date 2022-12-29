@@ -10,5 +10,6 @@ echo "
             <title>Document</title>
             <link rel='stylesheet' href='/build/css/style.css'>
         </head>
-    "
+        <body>
+    ";
 ?>

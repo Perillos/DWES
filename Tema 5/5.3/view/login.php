@@ -1,18 +1,18 @@
 <?php
-include "templates/head.php";
+include "./templates/head.php";
 ?>
 
 <body>
     <h1>Acceso al sistema</h1>
-    <form action="conexion.php" method="post">
+    <form action="/auth/conexion.php" method="post">
         <div>
             <label for="user">Usuario:</label>
-            <input name="user" type="text" id="user" placeholder="super">
+            <input name="user" type="text" id="user" placeholder="super" require>
         </div>
         
         <div>
-            <label for="key">Clave:</label>
-            <input name="key" type="password" id="key" placeholder="mega">
+            <label for="password">Clave:</label>
+            <input name="password" type="password" id="password" placeholder="mega" require>
         </div>
 
         <div class="container">
@@ -24,3 +24,10 @@ include "templates/head.php";
     </div>
 </body>
 </html>
+
+
+
+
+<?php
+include "../view/templates/footer.php";
+?>

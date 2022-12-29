@@ -1,12 +1,12 @@
 <?php
 include "seguridad.php";
-include "dbcone.php";
+include "dbconnect.php";
 include "head.php";
 
 
 $value = $_GET['id'];
 
-$sql = "SELECT  * FROM usuarios WHERE id = '$value'";
+$sql = "SELECT  * FROM users WHERE id = '$value'";
 
 $result = $link->prepare($sql);
 $result->execute();

@@ -6,12 +6,12 @@ include "head.php";
 
 $value = $_GET['id'];
 
-$sql = "SELECT  * FROM usuarios WHERE id = '$value'";
+$sql = "SELECT  * FROM users WHERE id = '$value'";
 $resulSel = $link->prepare($sql);
 $resulSel->execute();
 $array1 = $resulSel->fetch();
 
-$sql = "DELETE FROM clientesdwes.usuarios WHERE id = '$value'";
+$sql = "DELETE FROM users WHERE id = '$value'";
 
 $resulDel = $link->prepare($sql);
 $resulDel->execute();

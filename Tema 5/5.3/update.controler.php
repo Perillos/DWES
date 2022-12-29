@@ -31,8 +31,8 @@ if(
                 </div>
         ";
     } else {
-        include("dbcone.php");
-        $sql = "UPDATE clientesdwes.usuarios
+        include("dbconnect.php");
+        $sql = "UPDATE users
         SET DNI = '$DNI', Nombre = '$NOM', Dirección = '$DIR', Localidad = '$LOC', Provincia = '$PRO', Telefono = '$TEL', email = '$MAIL' WHERE id = '$ID'";
         $result = $link->prepare($sql);
         $resultDe = $result->execute();;

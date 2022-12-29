@@ -1,7 +1,7 @@
 <?php
 
 include "./view/templates/head.php";
-include "./config/dbcone.php";
+include "./config/dbconnect.php";
 
 // user, password, type, dni_number, dni_letter, name, direction, location, province, phone, email
 $sql = "DROP TABLE IF EXISTS users";
@@ -45,13 +45,13 @@ $resulDel->execute();
 
 $arrayRow = [
     [
-        'mike', '1234', '40423129', 'P', 'Miken', 'Grayhawk Cross', 'Avignon', 'Paracin', '964-838-278', 'bewells5@hubpages.com'
+        'mike', '1234', '40423129', 'P', 'Miken', 'Grayhawk Cross', 'Avignon', 'Paracin', '964838278', 'bewells5@hubpages.com'
     ],
     [
-        'pincho', 'wKC1hkFqLVh', '856241620', 'S', 'Pincho', 'Mallard Plaza', 'Rybnoye', 'Alto del Espino', '696-962-928', 'cgreenley0@seesaa.net'
+        'pincho', 'wKC1hkFqLVh', '856241620', 'S', 'Pincho', 'Mallard Plaza', 'Rybnoye', 'Alto del Espino', '696962928', 'cgreenley0@seesaa.net'
     ],
     [
-        'ebayle', 'zC2o52m', '12165723', 'B', 'Ebayle', 'Sherman Lane', 'Inta', 'Cashel', '610-825-519', 'edubble1@umich.edu'
+        'ebayle', 'zC2o52m', '12165723', 'B', 'Ebayle', 'Sherman Lane', 'Inta', 'Cashel', '610825519', 'edubble1@umich.edu'
     ]
 ];
 
@@ -89,14 +89,14 @@ foreach ($arrayRow as $row) {
     $email=$row[9];
 
 
-    $sql = "INSERT INTO clientesdwes.users (user, password, type, dni_number, dni_letter, name, direction, location, province, phone, email) VALUES ('$user', '$passwordhas', 'client', '$dni_number', '$dni_letter', '$name', '$direction', '$location', '$province', '$phone', '$email')";
+    $sql = "INSERT INTO users (user, password, type, dni_number, dni_letter, name, direction, location, province, phone, email) VALUES ('$user', '$passwordhas', 'client', '$dni_number', '$dni_letter', '$name', '$direction', '$location', '$province', '$phone', '$email')";
     $insertar = $link->prepare($sql);
     $insertar->execute();
 
 
     echo "
         <tr>
-            <td>$dni_number-dni_letter</td>
+            <td>$dni_number-$dni_letter</td>
             <td>$user</td>
             <td>$password</td>
             <td>$name</td>
@@ -109,10 +109,10 @@ echo "</table>";
 
 $arrayRow = [
     [
-        'ilustre', 'Wvrp48LZYI', '93746473', 'Z', 'Ilustre', 'Atwood Court', 'Jian', 'Ko Samui', '443-278-209', 'jfishly2@senate.gov'
+        'ilustre', 'señor', '93746473', 'Z', 'Ilustre', 'Atwood Court', 'Jian', 'Ko Samui', '443278209', 'jfishly2@senate.gov'
     ],
     [
-        'brenaman', 'JbsyQWJc1IJ', '57488087', 'R', 'Brenaman', 'Sutteridge Parkway', 'Czerniewice', 'Sainte-Marthe', '412-212-006', 'jdanilishin3@nbcnews.com'
+        'brenaman', 'JbsyQWJc1IJ', '57488087', 'R', 'Brenaman', 'Sutteridge Parkway', 'Czerniewice', 'Sainte-Marthe', '412212006', 'jdanilishin3@nbcnews.com'
     ]
 ];
 
@@ -150,14 +150,14 @@ foreach ($arrayRow as $row) {
     $email=$row[9];
 
 
-    $sql = "INSERT INTO clientesdwes.users (user, password, type, dni_number, dni_letter, name, direction, location, province, phone, email) VALUES ('$user', '$passwordhas', 'editor', '$dni_number', '$dni_letter', '$name', '$direction', '$location', '$province', '$phone', '$email')";
+    $sql = "INSERT INTO users (user, password, type, dni_number, dni_letter, name, direction, location, province, phone, email) VALUES ('$user', '$passwordhas', 'editor', '$dni_number', '$dni_letter', '$name', '$direction', '$location', '$province', '$phone', '$email')";
     $insertar = $link->prepare($sql);
     $insertar->execute();
 
 
     echo "
         <tr>
-            <td>$dni_number-dni_letter</td>
+            <td>$dni_number-$dni_letter</td>
             <td>$user</td>
             <td>$password</td>
             <td>$name</td>
@@ -172,10 +172,10 @@ echo "</table>";
 
 $arrayRowAd = [
     [
-        'super', 'mega', '36560371', 'P', 'Manolo', 'Bluestem Terrace', 'Klampok', 'Rennes', '890-314-277', 'vjarnell9@wsj.com'
+        'super', 'mega', '36560371', 'P', 'Manolo', 'Bluestem Terrace', 'Klampok', 'Rennes', '890314277', 'vjarnell9@wsj.com'
     ],
     [
-        'admin', 'admin', '71603623', 'T', 'Cristina', 'Northridge Lane', 'Dysina', 'Pontivy', '407-614-533', 'bzavattero8@cnbc.com'
+        'admin', 'admin', '71603623', 'T', 'Cristina', 'Northridge Lane', 'Dysina', 'Pontivy', '407614533', 'bzavattero8@cnbc.com'
     ]
 ];
 
@@ -206,14 +206,14 @@ foreach ($arrayRowAd as $row) {
     $email=$row[9];
 
 
-    $sql = "INSERT INTO clientesdwes.users (user, password, type, dni_number, dni_letter, name, direction, location, province, phone, email) VALUES ('$user', '$passwordhas', 'admin', '$dni_number', '$dni_letter', '$name', '$direction', '$location', '$province', '$phone', '$email')";
+    $sql = "INSERT INTO users (user, password, type, dni_number, dni_letter, name, direction, location, province, phone, email) VALUES ('$user', '$passwordhas', 'admin', '$dni_number', '$dni_letter', '$name', '$direction', '$location', '$province', '$phone', '$email')";
     $insertar = $link->prepare($sql);
     $insertar->execute();
 
 
     echo "
         <tr>
-            <td>$dni_number-dni_letter</td>
+            <td>$dni_number-$dni_letter</td>
             <td>$user</td>
             <td>$password</td>
             <td>$name</td>
@@ -254,26 +254,24 @@ echo "
     ";
 
 foreach ($arrayRowAd as $row) {
-    $name=$row[0];
+    $nameproduct=$row[0];
     $description=$row[1];
     $categori=$row[2];
     $price = $row[3];
     $image=$row[4];
 
     
-    $sql = "INSERT INTO clientesdwes.products (name, description, categori, price, image) VALUES ('$name', '$description', '$categori', '$price', '$image')";
+    $sql = "INSERT INTO products (name, description, categori, price, image) VALUES ('$nameproduct', '$description', '$categori', '$price', '$image')";
     $insertar = $link->prepare($sql);
     $insertar->execute();
 
 
     echo "
     <tr>
-        <td>$name</td>
+        <td>$nameproduct</td>
         <td>$categori</td>
-        <td>$price</td>
+        <td>$price €</td>
         <td><img src='$image'></td>
-        
-        
     </tr>
 ";
 }
