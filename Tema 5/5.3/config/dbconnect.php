@@ -4,7 +4,7 @@
 $host = "localhost";
 $database_name = "clientesdwes";
 $database_user_name = "root";
-$database_password = "root";
+$database_password = "";
 //
 
 

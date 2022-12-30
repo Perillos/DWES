@@ -53,7 +53,7 @@ include "./templates/head.php";
     </div>
 
     <div class="container">
-        <input name="Enviar" value="Enviar datos" type="submit" class="button">
+        <input name="submit" value="Enviar datos" type="submit" class="button">
     </div>
 </form>
 

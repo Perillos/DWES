@@ -16,11 +16,12 @@ include "./templates/head.php";
         </div>
 
         <div class="container">
-            <input name="Enviar" value="Login" type="submit"  class="button"> 
+            <input name="submit" value="Login" type="submit"  class="button"> 
         </div>
     </form>
     <div class="container">
-        <a href='registrate.php' class='button'>Registrarse</a> 
+        <a href='registrate.php' class='button'>Registrarse</a>
+        <a href='lostpassword.php' class='button'>Olvidé contraseña</a> 
     </div>
 </body>
 </html>

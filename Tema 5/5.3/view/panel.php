@@ -39,19 +39,19 @@ if (isset($_REQUEST['buscar'])) {
 
 if ($type_user == "admin") {
     if ($dni != "")  {
-        $sql = "SELECT  * FROM users where dni_number LIKE '%$dni%'";
-        $resul1 = $link->prepare($sql);
-        $resul1->execute();
+        $sql = "SELECT  * FROM users WHERE dni_number LIKE '%$dni%'";
+        $result = $link->prepare($sql);
+        $result->execute();
     } else {
         $sql = "SELECT  * FROM users";
-        $resul1 = $link->prepare($sql);
-        $resul1->execute();
+        $result = $link->prepare($sql);
+        $result->execute();
     }
 
 } else {
     $sql = "SELECT  * FROM users where user = '$user'";
-    $resul1 = $link->prepare($sql);
-    $resul1->execute();
+    $result = $link->prepare($sql);
+    $result->execute();
 }
 
 
@@ -72,7 +72,7 @@ echo "
     ";
 
 
-while ($row = $resul1->fetch()){
+while ($row = $result->fetch()){
 
     echo "
             <tr>

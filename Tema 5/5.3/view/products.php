@@ -8,8 +8,8 @@ include "../config/dbconnect.php";
 $type_user = $_SESSION['type_user'];
 
 $sql = "SELECT  * FROM products";
-$resul1 = $link->prepare($sql);
-$resul1->execute();
+$result = $link->prepare($sql);
+$result->execute();
 
 
 echo "<h1>Lista de Productos</h1>";
@@ -33,7 +33,7 @@ echo "
 echo "</tr>";
 
 
-while ($row = $resul1->fetch()){
+while ($row = $result->fetch()){
 
     echo "
             <tr>
