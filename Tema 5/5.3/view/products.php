@@ -1,6 +1,4 @@
 <?php
-
-
 include "../auth/seguridad.php";
 include "./templates/head.php";
 include "../config/dbconnect.php";
@@ -45,8 +43,8 @@ while ($row = $result->fetch()){
         ";
         if ($type_user == "editor") {
             echo "
-                <td><a class='edit' href='update.form.php?id=".$row["0"]."'></a></td>
-                <td><a class='delete' href='delete.php?id=".$row["0"]."' ></a></td>
+                <td><a class='edit' href='updateproduct.php?id=".$row["0"]."'></a></td>
+                <td><a class='delete' href='deleteproduct.php?id=".$row["0"]."' ></a></td>
             ";
         }
 

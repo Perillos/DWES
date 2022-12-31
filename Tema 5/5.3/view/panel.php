@@ -76,21 +76,27 @@ while ($row = $result->fetch()){
 
     echo "
             <tr>
-                <td>$row[5]</td>
-                <td>$row[4]</td>
+                <td>$row[4] - $row[5]</td>
                 <td>$row[6]</td>
                 <td>$row[7]</td>
                 <td>$row[8]</td>
                 <td>$row[9]</td>
                 <td>$row[10]</td>
-                <td><a class='edit' href='update.form.php?id=".$row["0"]."'></a></td>
-                <td>
+                <td>$row[11]</td>
         ";
-        if ($row[1] != $user) {
-            echo "<a class='delete' href='delete.php?id=".$row["0"]."' ></a>";
+         
+        if ($row[3] != 'admin') {
+            echo "  
+                <td><a class='edit' href='updateuser.php?id=".$row["0"]."'></a></td>
+            ";
+        }
+        if ($row[3] != 'admin') {
+            echo "
+                <td><a class='delete' href='deleteuser.php?id=".$row["0"]."' ></a></td>
+            ";
         }
 
-        echo "</td></tr>";
+        echo "</tr>";
 } 
 
 echo "</table>";
@@ -100,13 +106,6 @@ if ($type_user == "admin") {
     echo "
             <div class='container'>
                 <a href='registrate.php' class='button'>Nuevo</a>
-                <a href='salir.php' class='button'>Cerrar session</a>
-            </div>
-        ";
-} else if ($type_user == "user") {
-    echo "
-            <div class='container'>
-                <a href='salir.php' class='button'>Cerrar session</a>
             </div>
         ";
 }

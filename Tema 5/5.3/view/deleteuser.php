@@ -1,7 +1,7 @@
 <?php
-include "seguridad.php";
-include "dbconnect.php";
-include "head.php";
+include "../auth/seguridad.php";
+include "./templates/head.php";
+include "../config/dbconnect.php";
 
 
 $value = $_GET['id'];
@@ -44,9 +44,12 @@ echo "<h1>Estas seguro que quires eliminar al cliente</h1>";
 
     echo "
         <div class='container'>
-            <a href='delete.controler.php?id=".$row["0"]."' class='button'>Eliminar</a>
-            <a href='index.php' class='button'>Volver</a>
+            <a href='/controller/delete.user.controler.php?id=".$row["0"]."' class='button'>Eliminar</a>
+            <a href='panel.php' class='button'>Volver</a>
         </div>
     ";
-?>
 
+
+
+include "../view/templates/footer.php";
+?>

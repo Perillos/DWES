@@ -3,6 +3,8 @@
 include "./view/templates/head.php";
 include "./config/dbconnect.php";
 
+
+
 // user, password, type, dni_number, dni_letter, name, direction, location, province, phone, email
 $sql = "DROP TABLE IF EXISTS users";
 $resulDel = $link->prepare($sql);
@@ -38,6 +40,7 @@ $sql = "CREATE TABLE products (
     categori varchar(255) DEFAULT NULL,
     price decimal(10,2) DEFAULT NULL,
     image varchar(255) DEFAULT NULL,
+    reference varchar(100) DEFAULT NULL,
     PRIMARY KEY (id)
   ) ENGINE=InnoDB AUTO_INCREMENT=158 DEFAULT CHARSET=utf8mb3";
 $resulDel = $link->prepare($sql);
@@ -55,13 +58,14 @@ $arrayRow = [
     ]
 ];
 
-echo "<p>Datos Eliminados</p>";
+echo "<h1>SEMILLA</h1>";
+echo "<h2>Datos Eliminados</h2>";
 
 
 
 
 
-echo "<h1>Datos Creados Usuarios</h1>";
+echo "<h2>Datos Creados Usuarios</h2>";
 
 echo "<table border>";
 
@@ -71,6 +75,7 @@ echo "
           <td>Usuario</td>
           <td>Password</td>
           <td>Nombre</td>
+          <td>Email</td>
         </tr>
     ";
 
@@ -100,6 +105,7 @@ foreach ($arrayRow as $row) {
             <td>$user</td>
             <td>$password</td>
             <td>$name</td>
+            <td>$email</td>
             
         </tr>
     ";
@@ -122,7 +128,7 @@ echo "<p>Datos Eliminados</p>";
 
 
 
-echo "<h1>Datos Creados Editores</h1>";
+echo "<h2>Datos Creados Editores</h2>";
 
 echo "<table border>";
 
@@ -132,6 +138,7 @@ echo "
           <td>Usuario</td>
           <td>Clave</td>
           <td>Nombre</td>
+          <td>Email</td>
         </tr>
     ";
 
@@ -161,6 +168,7 @@ foreach ($arrayRow as $row) {
             <td>$user</td>
             <td>$password</td>
             <td>$name</td>
+            <td>$email</td>
             
         </tr>
     ";
@@ -180,7 +188,7 @@ $arrayRowAd = [
 ];
 
 
-echo "<h1>Datos Creados Administradores</h1>";
+echo "<h2>Datos Creados Administradores</h2>";
 
 echo "<table border>";
 echo "
@@ -189,6 +197,7 @@ echo "
             <td>Usuario</td>
             <td>Clave</td>
             <td>Nombre</td>
+            <td>Email</td>
         </tr>
     ";
 
@@ -217,6 +226,7 @@ foreach ($arrayRowAd as $row) {
             <td>$user</td>
             <td>$password</td>
             <td>$name</td>
+            <td>$email</td>
             
         </tr>
     ";
@@ -233,21 +243,22 @@ echo "</table>";
 
 $arrayRowAd = [
     [
-        'camisa chula', 'camisa tan chula que es increible', 'camisa', 35.55, '/build/img/camisa_chula.jpg'
+        'camisa chula', 'camisa tan chula que es increible', 'camisa', 35.55, '/build/img/camisa_chula.jpg', 'kkl78965'
     ],
     [
-        'pantalón molón', 'pantalón tan molón que es increible', 'pantalón', 72.88, '/build/img/pantalon_molon.png'
+        'pantalón molón', 'pantalón tan molón que es increible', 'pantalón', 72.88, '/build/img/pantalon_molon.png', 'uil47896'
     ]
 ];
 
 
-echo "<h1>Datos Creados Productos</h1>";
+echo "<h2>Datos Creados Productos</h2>";
 
 echo "<table border>";
 echo "
         <tr>
-            <td>Nombre</td>
-            <td>Categoría</td>
+          <td>Ref.</td>
+          <td>Nombre</td>
+          <td>Categoría</td>
             <td>Precio</td>
             <td>Imagen</td>
         </tr>
@@ -259,15 +270,16 @@ foreach ($arrayRowAd as $row) {
     $categori=$row[2];
     $price = $row[3];
     $image=$row[4];
-
+    $reference=$row[5];
     
-    $sql = "INSERT INTO products (name, description, categori, price, image) VALUES ('$nameproduct', '$description', '$categori', '$price', '$image')";
+    $sql = "INSERT INTO products (name, description, categori, price, image, reference) VALUES ('$nameproduct', '$description', '$categori', '$price', '$image', '$reference')";
     $insertar = $link->prepare($sql);
     $insertar->execute();
 
 
     echo "
     <tr>
+        <td>$reference</td>
         <td>$nameproduct</td>
         <td>$categori</td>
         <td>$price €</td>

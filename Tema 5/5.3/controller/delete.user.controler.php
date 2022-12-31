@@ -1,10 +1,12 @@
 <?php
-include "seguridad.php";
-include "dbcone.php";
-include "head.php";
+include "../auth/seguridad.php";
+include "../view/templates/head.php";
+include "../config/dbconnect.php";
 
 
 $value = $_GET['id'];
+
+$type_user = $_SESSION['type_user'];
 
 $sql = "SELECT  * FROM users WHERE id = '$value'";
 $resulSel = $link->prepare($sql);
@@ -49,9 +51,12 @@ if(!$resulDel) {
     ";
     echo "</table border>";
 }
+if ($type_user != 'admin') {
+  session_destroy();
+}
 
 ?>
 
 <div class='container'>
-    <a href='index.php' class='button'>Volver a los clientes</a>
+    <a href='/index.php' class='button'>Volver al panel</a>
 </div>

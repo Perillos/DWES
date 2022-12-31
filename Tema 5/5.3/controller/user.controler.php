@@ -106,7 +106,7 @@ $insertar->execute();
 
 
 if(!$insertar) {
-    echo "<h2>Ha habido un error al insertar los datos. $my_error<h2>";
+    echo "<h2>Ha habido un error al insertar los datos.<h2>";
     echo "
     <div class='container'>
         <a href='/view/registrate.php' class='button'>Volver</a>

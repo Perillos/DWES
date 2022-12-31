@@ -1,4 +1,5 @@
 <?php
+include "../auth/seguridad.php";
 include "../config/dbconnect.php";
 include "../view/templates/head.php";
 
@@ -9,6 +10,7 @@ if (
         empty($_POST['priceproduct']) ||
         empty($_POST['typeproduct']) ||
         empty($_POST['descriptionproduct']) ||
+        empty($_POST['reference']) ||
         empty($_FILES['imagenproduct'])
     ) {
         echo "
@@ -26,11 +28,12 @@ $priceproduct = $_POST['priceproduct'];
 $categori = $_POST['typeproduct'];
 $description = $_POST['descriptionproduct'];
 $image = $_FILES['imagenproduct'];
+$reference = $_POST['reference'];
 
 
 // Valida el tipo de archivo
-$tiposPermitidos = array("image/jpeg", "image/png", "image/gif");
-if (!in_array($image['type'], $tiposPermitidos)) {
+$aimages_allowed = array("image/jpeg", "image/png", "image/gif");
+if (!in_array($image['type'], $aimages_allowed)) {
   echo "<h2>Error: sólo se permiten archivos de imagen (JPEG, PNG o GIF)</h2>";
   echo "
     <div class='container'>
@@ -41,10 +44,10 @@ if (!in_array($image['type'], $tiposPermitidos)) {
 }
 
 
-// Valida el tamaño de la imagen
-if ($image['size'] > 900000) {
+$max_file = 300000;
+if ($image['size'] > $max_file) {
 
-  echo "<h2>Error: el tamaño del archivo debe ser inferior a 900KB</h2>";
+  echo "<h2>Error: el tamaño del archivo debe ser inferior a 300KB</h2>";
   echo "
     <div class='container'>
       <a href='/view/newproduct.php' class='button'>Volver</a>
@@ -53,10 +56,33 @@ if ($image['size'] > 900000) {
   die();
 }
 
+
+$max_size = 200;
+if (getimagesize($image['tmp_name'])[0] > $max_size || getimagesize($image['tmp_name']) > $max_size) {
+  echo "<h2>Error: el tamaño de la imagen debe ser inferior a 200x200 pixels<h2>";
+  echo "
+  <div class='container'>
+  <a href='/view/products.php' class='button'>Volver</a>
+  </div>
+  ";
+  die();
+}
+
+if (!preg_match("/^[a-zA-Z]{3}[0-9]{5}$/", $reference)) {
+  echo "<h2>La referencia del producto tiene que tener tres letras seguida de cinco números.</h2>";
+  echo "
+    <div class='container'>
+      <a href='/view/newproduct.php' class='button'>Volver</a>
+    </div>
+  ";
+  die();
+}
+
+
 move_uploaded_file($image['tmp_name'], "../build/img/" . $image['name']);
 $load_img = "/build/img/".$image['name'];
 
-$sql = "INSERT INTO products (name, description, categori, price, image) VALUES ('$nameproduct', '$description', '$categori', '$priceproduct', '$load_img')";
+$sql = "INSERT INTO products (name, description, categori, price, image, reference) VALUES ('$nameproduct', '$description', '$categori', '$priceproduct', '$load_img', '$reference')";
 $insertar = $link->prepare($sql);
 $insertar->execute();
 
@@ -76,6 +102,7 @@ if(!$insertar) {
   echo "<table border>";
   echo "
         <tr>
+            <td>Ref.</td>
             <td>Nombre</td>
             <td>Categoría</td>
             <td>Precio</td>
@@ -84,6 +111,7 @@ if(!$insertar) {
     ";
   echo "
     <tr>
+        <td>$reference</td>
         <td>$nameproduct</td>
         <td>$categori</td>
         <td>$priceproduct €</td>

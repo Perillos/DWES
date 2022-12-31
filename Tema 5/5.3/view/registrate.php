@@ -8,7 +8,7 @@ include "./templates/head.php";
 <form  name="formadduser" method="post" action="/controller/user.controler.php" enctype="multipart/form-data">
     <div>
         <label for="dni_number">Número del DNI:</label>
-        <input name="dni_number" type="number"  max="99999999" id="dni_number" placeholder="73895197" required>
+        <input name="dni_number" type="number" min="10000000" max="99999999" id="dni_number" placeholder="73895197" required>
     </div>
     <div>
         <label for="dni_letter">Letra del DNI:</label>
@@ -44,7 +44,7 @@ include "./templates/head.php";
 
     <div>
         <label for="phone">Teléfono:</label>
-        <input name="phone" type="number" id="phone" max="999999999" placeholder="681793567" required>
+        <input name="phone" type="number" id="phone" min="100000000" max="999999999" placeholder="681793567" required>
     </div>
 
     <div>

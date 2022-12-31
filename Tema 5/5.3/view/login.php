@@ -4,6 +4,10 @@ include "./templates/head.php";
 
 <body>
     <h1>Acceso al sistema</h1>
+    <?php
+    $mensage = empty($_GET['mensage']) ? "" : $_GET['mensage'];
+    echo "<h4>$mensage</h4>";
+    ?>
     <form action="/auth/conexion.php" method="post">
         <div>
             <label for="user">Usuario:</label>
